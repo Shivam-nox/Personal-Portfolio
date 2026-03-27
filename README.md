@@ -1,36 +1,49 @@
-# Personal Portfolio Website in React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Personal Portfolio
 
-<img width="1266" alt="Screen Shot 2022-06-19 at 2 18 18 PM" src="https://user-images.githubusercontent.com/50160672/174933373-1ba6cadf-1c9a-48c3-aa58-984d0bd62d82.png">
+Welcome to my personal portfolio website! This project showcases my skills, projects, and experience as a developer.
 
-Built using:
+## 🚀 Features
 
-- Front-end library: React
-- CSS framework: React-bootstrap
-- CSS animations library: Animate.css
+- Responsive design for all devices
+- Project showcase with live demos
+- Contact form for inquiries
+- Dark mode support
+- Smooth animations and transitions
 
-In the /personal-portfolio, you can run:
+## 📁 Project Structure
 
-### `npm start`
+```
+├── index.html
+├── css/
+│   └── styles.css
+├── js/
+│   └── script.js
+├── assets/
+│   └── images/
+└── README.md
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🛠️ Technologies Used
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- HTML5
+- CSS3
+- JavaScript
+- [Add your frameworks/libraries here]
 
-### `npm test`
+## 📖 Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repository
+2. Open `index.html` in your browser
+3. Customize content with your information
 
-### `npm run build`
+## 📞 Contact
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Feel free to reach out via:
+- Email: your.email@example.com
+- LinkedIn: [Your Profile]
+- GitHub: [Your Profile]
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 📄 License
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+This project is open source and available under the MIT License.
