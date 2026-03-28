@@ -19,7 +19,7 @@ export const Banner = () => {
   const [vantaEffect, setVantaEffect] = useState(null);
   const vantaRef = useRef(null);
 
- useEffect(() => {
+  useEffect(() => {
     // Make sure vantaEffect doesn't exist AND the HTML element is fully loaded
     if (!vantaEffect && vantaRef.current) {
       setVantaEffect(
@@ -43,7 +43,7 @@ export const Banner = () => {
     return () => {
       if (vantaEffect) vantaEffect.destroy();
     };
-  }, [vantaEffect]); // Keep this dependency array as is
+  }, [vantaEffect]);
 
   const toRotate = [
     "Full-Stack Web Developer",
@@ -96,26 +96,26 @@ export const Banner = () => {
           display: flex;
           align-items: center;
           overflow: hidden;
-          /* Increased top padding to prevent navbar overlap */
           padding: 180px 0 100px;
         }
 
-        /* Ensure content stays ABOVE the Vanta canvas */
+        /* Ensure content stays ABOVE the Vanta canvas and is clickable */
         .banner-content-wrapper {
           position: relative;
-          z-index: 2; 
+          z-index: 10; /* Bumped up z-index to ensure links are clickable */
+          pointer-events: auto;
         }
 
         /* Highlighted Name instead of Glass box */
         .modern-banner .tagline {
           font-weight: 700;
           letter-spacing: 3px;
-          color: #8B5CF6; /* Vibrant Purple */
+          color: #8B5CF6; 
           text-transform: uppercase;
           display: inline-block;
           margin-bottom: 20px;
           font-size: 1.1rem;
-          text-shadow: 0 0 15px rgba(139, 92, 246, 0.5); /* Glowing effect */
+          text-shadow: 0 0 15px rgba(139, 92, 246, 0.5); 
         }
 
         .modern-banner h1 {
@@ -127,7 +127,7 @@ export const Banner = () => {
         }
 
         .modern-banner p {
-          color: #d1d5db; /* Slightly lighter gray to contrast with fog */
+          color: #d1d5db; 
           font-size: 1.1rem;
           line-height: 1.8;
           max-width: 90%;
@@ -154,6 +154,8 @@ export const Banner = () => {
           padding-bottom: 4px;
           border-bottom: 2px solid transparent;
           transition: all 0.3s ease;
+          position: relative;
+          z-index: 20; /* Guarantees clickability */
         }
 
         .resume-link svg {
@@ -177,12 +179,21 @@ export const Banner = () => {
           .modern-banner h1 {
             font-size: 2.5rem;
           }
+          .modern-banner p {
+            max-width: 100%;
+          }
+          /* Added text alignment for mobile to make it look cleaner */
+          .mobile-text-center {
+            text-align: center;
+          }
         }
       `}</style>
 
       <Container className="banner-content-wrapper">
         <Row className="align-items-center">
-          <Col xs={12} md={6} xl={7}>
+          
+          {/* TEXT COLUMN: order-2 on mobile, order-md-1 on desktop */}
+          <Col xs={12} md={6} xl={7} className="order-2 order-md-1 mt-5 mt-md-0 mobile-text-center">
             <div>
               <span className="tagline">SHIVAM DWIVEDI</span>
               <h1>
@@ -204,9 +215,9 @@ export const Banner = () => {
                 improving my development skills.
               </p>
 
-              {/* Replace "#" with the actual path to your resume, e.g., "/resume.pdf" */}
+              {/* REPLACE the href link below with your actual Google Drive or Resume link */}
               <a
-                href="#"
+                href="https://drive.google.com/your-resume-link-here" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="resume-link"
@@ -215,17 +226,20 @@ export const Banner = () => {
               </a>
             </div>
           </Col>
-          <Col xs={12} md={6} xl={5}>
+
+          {/* IMAGE COLUMN: order-1 on mobile, order-md-2 on desktop */}
+          <Col xs={12} md={6} xl={5} className="order-1 order-md-2">
             <div>
-              <div className="hero-img-container mt-5 mt-md-0">
+              <div className="hero-img-container">
                 <img
                   src={bannerImg}
                   alt="Hero Illustration"
-                  style={{ width: "100%" }}
+                  style={{ width: "100%", maxWidth: "400px", margin: "0 auto", display: "block" }}
                 />
               </div>
             </div>
           </Col>
+
         </Row>
       </Container>
     </section>

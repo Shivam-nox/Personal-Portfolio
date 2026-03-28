@@ -158,7 +158,7 @@ export const NavBar = () => {
         }
         
         .navbar-toggler:focus {
-          box-shadow: none; /* Removes the ugly blue focus ring */
+          box-shadow: none; 
         }
         
         /* Force a pure white SVG icon */
@@ -177,7 +177,6 @@ export const NavBar = () => {
         }
       `}</style>
 
-      {/* Added variant="dark" here */}
       <Navbar variant="dark" expand="lg" className={`premium-navbar ${scrolled ? "scrolled" : ""}`}>
         <Container>
           <Navbar.Brand href="/">
@@ -215,13 +214,16 @@ export const NavBar = () => {
 
             <div className="right-nav-section d-flex align-items-center gap-4">
               <div className="navbar-social-icon">
-                <a href="https://www.linkedin.com/in/shivam-dwivedi" target="_blank" rel="noopener noreferrer">
+
+
+                {/* Updated with REACT_APP_ and fallback strings */}
+                <a href={"https://www.linkedin.com/in/shivam-dwivedi-099885330/"} target="_blank" rel="noopener noreferrer">
                   <img src={navIcon1} alt="LinkedIn" />
                 </a>
-                <a href="https://github.com/funnyshvm" target="_blank" rel="noopener noreferrer">
+                <a href={"https://github.com/Shivam-nox"} target="_blank" rel="noopener noreferrer">
                   <img src={navIcon2} alt="GitHub" />
                 </a>
-                <a href="https://instagram.com/shvm_irl" target="_blank" rel="noopener noreferrer">
+                <a href={"https://www.instagram.com/shvm_irl/"} target="_blank" rel="noopener noreferrer">
                   <img src={navIcon3} alt="Instagram" />
                 </a>
               </div>

@@ -111,7 +111,7 @@ export const Footer = () => {
               
               {/* LinkedIn */}
               <a 
-                href="https://www.linkedin.com/in/shivam-dwivedi" 
+                href={"https://www.linkedin.com/in/shivam-dwivedi-099885330/"}
                 target="_blank" 
                 rel="noopener noreferrer"
               >
@@ -120,7 +120,7 @@ export const Footer = () => {
 
               {/* GitHub */}
               <a 
-                href="https://github.com/funnyshvm" 
+                href={"https://github.com/Shivam-nox"}
                 target="_blank" 
                 rel="noopener noreferrer"
               >
@@ -129,7 +129,7 @@ export const Footer = () => {
 
               {/* Instagram / X */}
               <a 
-                href="https://instagram.com/shvm_irl" 
+                href={"https://www.instagram.com/shvm_irl/"}
                 target="_blank" 
                 rel="noopener noreferrer"
               >

@@ -220,10 +220,10 @@ export const Contact = () => {
                 <a href="mailto:shvm945@gmail.com" className="social-pill">
                   📧 shvm945@gmail.com
                 </a>
-                <a href="https://linkedin.com/in/YOUR_LINKEDIN_URL" target="_blank" rel="noreferrer" className="social-pill">
+                <a href="https://www.linkedin.com/in/shivam-dwivedi-099885330/" target="_blank" rel="noreferrer" className="social-pill">
                   💼 LinkedIn
                 </a>
-                <a href="https://github.com/funnyshvm" target="_blank" rel="noreferrer" className="social-pill">
+                <a href="https://github.com/Shivam-nox" target="_blank" rel="noreferrer" className="social-pill">
                   🐙 GitHub
                 </a>
               </div>
