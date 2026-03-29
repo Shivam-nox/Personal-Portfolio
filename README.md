@@ -40,9 +40,9 @@ Welcome to my personal portfolio website! This project showcases my skills, proj
 ## 📞 Contact
 
 Feel free to reach out via:
-- Email: your.email@example.com
-- LinkedIn: [Your Profile]
-- GitHub: [Your Profile]
+- Email: shvm945@gmail.com
+- LinkedIn: (https://www.linkedin.com/in/shivam-dwivedi-099885330/)
+- GitHub:(https://github.com/Shivam-nox)
 
 ## 📄 License
 
