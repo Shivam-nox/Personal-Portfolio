@@ -343,7 +343,7 @@ useEffect(() => {
 
             <div className="hero-cta-row">
               <a
-                href="https://drive.google.com/your-resume-link-here"
+                href="https://drive.google.com/file/d/1jfyR2welA8BHQ84xRZ8Tv1Ml5OfZZ1WK/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary-hero"

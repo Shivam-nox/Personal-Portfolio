@@ -102,12 +102,12 @@ export const Projects = () => {
 
   const projects = [
     {
-      title: "AI Expense Habit Coach",
+      title: "AI Expense Habit Coach Application",
       description: "Cross-platform mobile app that tracks spending habits and delivers AI-driven financial insights through the Grok API.",
       stack: ["React Native", "Node.js", "PostgreSQL", "Grok API"],
       imgUrl: projImg1,
-      liveLink: "https://your-demo-link.com",
-      githubLink: "https://github.com/funnyshvm/expense-coach",
+      liveLink: "https://docs.google.com/document/d/102BLGnBPDFQYHUyMAFMvjdUAGM-Wkodqb5QDu5W9-OQ/edit?usp=sharing",
+      githubLink: "https://github.com/Shivam-nox/Expense-Habit-Coach",
     },
     {
       title: "Zerodha Trading Dashboard",
