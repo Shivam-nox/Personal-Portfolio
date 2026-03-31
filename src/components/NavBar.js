@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
-import logo from '../assets/img/logo.svg';
 import navIcon1 from '../assets/img/nav-icon1.svg';
 import navIcon2 from '../assets/img/nav-icon2.svg';
 import navIcon3 from '../assets/img/nav-icon3.svg';
@@ -10,232 +9,284 @@ import { BrowserRouter as Router } from "react-router-dom";
 export const NavBar = () => {
   const [activeLink, setActiveLink] = useState('home');
   const [scrolled, setScrolled] = useState(false);
+  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    }
-
+    const onScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
-  }, [])
-
-  const onUpdateActiveLink = (value) => {
-    setActiveLink(value);
-  }
+  }, []);
 
   return (
     <Router>
       <style>{`
-        /* Base Transparent State */
-        .premium-navbar {
-          padding: 20px 0;
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Syne:wght@700;800&display=swap');
+
+        /* ── Always show a solid white navbar ── */
+        .clean-navbar {
+          padding: 14px 0; 
           position: fixed;
           width: 100%;
           top: 0;
-          z-index: 9999;
-          transition: all 0.4s ease-in-out;
-          background-color: transparent;
+          z-index: 10000 !important; 
+          font-family: 'DM Sans', sans-serif;
+          /* FORCE WHITE BACKGROUND to fix the dark theme override */
+          background-color: #ffffff !important; 
+          box-shadow: 0 1px 0 #e5e7eb;
+          transition: all 0.3s ease;
         }
 
-        /* Scrolled Glassmorphism State */
-        .premium-navbar.scrolled {
-          padding: 12px 0;
-          background-color: rgba(3, 7, 18, 0.7); 
-          backdrop-filter: blur(15px);
-          box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
-          border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        /* Extra shadow when scrolled */
+        .clean-navbar.scrolled {
+          padding: 10px 0; 
+          box-shadow: 0 1px 0 #e5e7eb, 0 4px 20px rgba(0,0,0,0.07);
         }
 
-        /* Logo Animation */
-        .nav-logo {
-          max-height: 100px;
-          transition: transform 0.3s ease;
-        }
-        .nav-logo:hover {
-          transform: scale(1.05);
+        /* ── Text Logo ── */
+        .text-logo {
+          font-family: 'Syne', sans-serif;
+          font-size: 1.5rem;
+          font-weight: 800;
+          /* Dark text to stand out on the white background */
+          color: #0f172a !important; 
+          opacity: 1 !important; 
+          text-decoration: none;
+          letter-spacing: -0.04em;
+          line-height: 1;
+          transition: color 0.2s;
         }
 
-        /* Nav Links */
-        .premium-navbar .navbar-nav .nav-link {
-          color: #d1d5db !important;
+        .text-logo .logo-dot {
+          color: #2563EB;
+        }
+
+        .text-logo:hover { color: #2563EB !important; text-decoration: none; }
+
+        /* ── Nav links ── */
+        .clean-navbar .navbar-nav .nav-link {
+          font-family: 'DM Sans', sans-serif;
           font-weight: 500;
-          letter-spacing: 0.8px;
-          padding: 0 15px;
-          font-size: 1.1rem;
-          opacity: 0.75;
+          font-size: 0.95rem;
+          color: #374151 !important; /* Dark gray for visibility */
+          padding: 8px 16px;
           position: relative;
-          transition: all 0.3s ease;
-        }
-        
-        .premium-navbar .navbar-nav .nav-link:hover,
-        .premium-navbar .navbar-nav .nav-link.active {
-          opacity: 1;
-          color: #fff !important;
+          letter-spacing: 0.01em;
+          transition: color 0.2s;
         }
 
-        /* Glowing Underline for Active/Hovered Link */
-        .premium-navbar .navbar-nav .nav-link::before {
-          content: "";
-          position: absolute;
-          width: 0%;
-          height: 2px;
-          bottom: -2px;
-          left: 50%;
-          transform: translateX(-50%);
-          background: linear-gradient(90deg, #aa367c, #4a2fbd);
-          transition: width 0.3s ease-in-out;
+        @media (min-width: 992px) {
+          .clean-navbar .navbar-nav .nav-link::after {
+            content: "";
+            position: absolute;
+            bottom: 0px;
+            left: 16px;
+            right: 16px;
+            height: 2px;
+            background: #2563EB;
+            border-radius: 2px;
+            transform: scaleX(0);
+            transition: transform 0.25s ease;
+          }
+
+          .clean-navbar .navbar-nav .nav-link:hover::after,
+          .clean-navbar .navbar-nav .nav-link.active::after {
+            transform: scaleX(1);
+          }
         }
 
-        .premium-navbar .navbar-nav .nav-link:hover::before,
-        .premium-navbar .navbar-nav .nav-link.active::before {
-          width: 60%;
+        .clean-navbar .navbar-nav .nav-link:hover,
+        .clean-navbar .navbar-nav .nav-link.active {
+          color: #2563EB !important;
         }
 
-        /* Social Icons */
-        .navbar-social-icon {
+        /* ── Social icon buttons ── */
+        .nav-social-row {
           display: flex;
           align-items: center;
-          gap: 12px;
+          gap: 8px;
         }
-        
-        .navbar-social-icon a {
+
+        .nav-social-btn {
           display: flex;
+          align-items: center;
           justify-content: center;
-          align-items: center;
-          width: 40px;
-          height: 40px;
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid rgba(255, 255, 255, 0.1);
-          border-radius: 50%;
-          transition: all 0.3s ease;
-        }
-        
-        .navbar-social-icon a img {
-          width: 45%;
-          transition: transform 0.3s ease;
-        }
-        
-        .navbar-social-icon a:hover {
-          background: rgba(139, 92, 246, 0.2);
-          border-color: #8B5CF6;
-          transform: translateY(-3px);
-          box-shadow: 0 5px 15px rgba(139, 92, 246, 0.3);
-        }
-        
-        .navbar-social-icon a:hover img {
-          transform: scale(1.1);
+          width: 36px;
+          height: 36px;
+          border-radius: 8px;
+          background: #f1f5f9;
+          border: 1px solid #e2e8f0;
+          transition: all 0.2s;
+          flex-shrink: 0;
         }
 
-        /* Connect Button */
-        .nav-vvd-btn {
-          padding: 10px 24px;
-          font-weight: 700;
+        .nav-social-btn:hover {
+          background: #eff6ff;
+          border-color: #93c5fd;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 10px rgba(37,99,235,0.12);
+        }
+
+        .nav-social-btn img {
+          width: 18px;
+          height: 18px;
+          filter: brightness(0) saturate(100%) invert(23%) sepia(8%) saturate(900%) hue-rotate(185deg) brightness(92%) contrast(92%);
+          transition: filter 0.2s;
+        }
+
+        .nav-social-btn:hover img {
+          filter: brightness(0) saturate(100%) invert(33%) sepia(98%) saturate(1200%) hue-rotate(210deg) brightness(95%) contrast(96%);
+        }
+
+        /* ── CTA button ── */
+        .nav-cta {
+          padding: 9px 22px;
+          font-family: 'DM Sans', sans-serif;
+          font-size: 0.9rem;
+          font-weight: 600;
           color: #fff;
-          background: linear-gradient(90deg, #aa367c, #4a2fbd);
+          background: #2563EB;
           border: none;
-          border-radius: 30px;
-          transition: all 0.3s ease;
+          border-radius: 8px;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          white-space: nowrap;
           text-decoration: none;
           display: inline-block;
-          white-space: nowrap; 
         }
 
-        .nav-vvd-btn:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 8px 20px rgba(170, 54, 124, 0.4);
+        .nav-cta:hover {
+          background: #1d4ed8;
           color: #fff;
+          box-shadow: 0 4px 14px rgba(37,99,235,0.35);
+          transform: translateY(-1px);
         }
 
-        /* --- Mobile Menu Toggle Fix --- */
+        /* ── Mobile toggle ── */
         .navbar-toggler {
-          border: 1px solid rgba(255, 255, 255, 0.3) !important;
-          outline: none;
-        }
-        
-        .navbar-toggler:focus {
-          box-shadow: none; 
-        }
-        
-        /* Force a pure white SVG icon */
-        .navbar-toggler-icon {
-          background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255, 255, 255, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+          border: 1px solid #e2e8f0 !important;
+          outline: none !important;
+          box-shadow: none !important;
+          background: #f8fafc;
+          border-radius: 8px !important;
+          padding: 6px 10px !important;
         }
 
+        .navbar-toggler-icon {
+          background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23374151' stroke-linecap='round' stroke-width='2.2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+          width: 20px;
+          height: 20px;
+        }
+
+        /* ── Mobile expanded menu FIX ── */
         @media (max-width: 991px) {
-          .premium-navbar {
-            background-color: rgba(3, 7, 18, 0.95); 
+          .navbar-collapse {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background: #ffffff;
+            padding: 14px 20px 24px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            border-top: 1px solid #f1f5f9;
+            border-radius: 0 0 16px 16px;
           }
-          .right-nav-section {
-            margin-top: 20px;
-            justify-content: flex-start !important;
+          
+          .clean-navbar .navbar-nav {
+            margin-bottom: 16px;
+          }
+
+          .clean-navbar .navbar-nav .nav-link {
+            padding: 12px 16px;
+            border-radius: 8px;
+          }
+          
+          .clean-navbar .navbar-nav .nav-link:hover,
+          .clean-navbar .navbar-nav .nav-link.active {
+            background: #f8fafc;
+          }
+
+          .right-section {
+            flex-direction: column;
+            align-items: flex-start !important;
+            gap: 16px;
+            padding: 0 16px;
           }
         }
       `}</style>
 
-      <Navbar variant="dark" expand="lg" className={`premium-navbar ${scrolled ? "scrolled" : ""}`}>
-        <Container>
-          <Navbar.Brand href="/">
-            <img src={logo} alt="Logo" className="nav-logo" />
+      <Navbar 
+        expand="lg" 
+        className={`clean-navbar ${scrolled ? "scrolled" : ""}`}
+        expanded={expanded} 
+      >
+        <Container className="position-relative">
+          {/* Text logo */}
+          <Navbar.Brand href="/" className="p-0 me-auto">
+            <span className="text-logo">shvm<span className="logo-dot">.</span></span>
           </Navbar.Brand>
-          
-          <Navbar.Toggle aria-controls="basic-navbar-nav">
-            <span className="navbar-toggler-icon"></span>
-          </Navbar.Toggle>
-          
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="ms-auto me-4 align-items-center gap-2">
-              <Nav.Link 
-                href="#home" 
-                className={activeLink === 'home' ? 'active navbar-link' : 'navbar-link'} 
-                onClick={() => onUpdateActiveLink('home')}
-              >
-                Home
-              </Nav.Link>
-              <Nav.Link 
-                href="#skills" 
-                className={activeLink === 'skills' ? 'active navbar-link' : 'navbar-link'} 
-                onClick={() => onUpdateActiveLink('skills')}
-              >
-                Skills
-              </Nav.Link>
-              <Nav.Link 
-                href="#projects" 
-                className={activeLink === 'projects' ? 'active navbar-link' : 'navbar-link'} 
-                onClick={() => onUpdateActiveLink('projects')}
-              >
-                Projects
-              </Nav.Link>
+
+          <Navbar.Toggle 
+            aria-controls="main-nav" 
+            onClick={() => setExpanded(expanded ? false : "expanded")} 
+          />
+
+          <Navbar.Collapse id="main-nav">
+            <Nav className="me-auto align-items-lg-center gap-1 ms-lg-4">
+              <Nav.Link
+                href="#home"
+                className={activeLink === 'home' ? 'active' : ''}
+                onClick={() => { setActiveLink('home'); setExpanded(false); }}
+              >Home</Nav.Link>
+              <Nav.Link
+                href="#skills"
+                className={activeLink === 'skills' ? 'active' : ''}
+                onClick={() => { setActiveLink('skills'); setExpanded(false); }}
+              >Skills</Nav.Link>
+              <Nav.Link
+                href="#projects"
+                className={activeLink === 'projects' ? 'active' : ''}
+                onClick={() => { setActiveLink('projects'); setExpanded(false); }}
+              >Projects</Nav.Link>
             </Nav>
 
-            <div className="right-nav-section d-flex align-items-center gap-4">
-              <div className="navbar-social-icon">
-
-
-                {/* Updated with REACT_APP_ and fallback strings */}
-                <a href={"https://www.linkedin.com/in/shivam-dwivedi-099885330/"} target="_blank" rel="noopener noreferrer">
+            <div className="d-flex align-items-lg-center gap-3 right-section">
+              <div className="nav-social-row">
+                <a
+                  href="https://www.linkedin.com/in/shivam-dwivedi-099885330/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="nav-social-btn"
+                  title="LinkedIn"
+                >
                   <img src={navIcon1} alt="LinkedIn" />
                 </a>
-                <a href={"https://github.com/Shivam-nox"} target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://github.com/Shivam-nox"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="nav-social-btn"
+                  title="GitHub"
+                >
                   <img src={navIcon2} alt="GitHub" />
                 </a>
-                <a href={"https://www.instagram.com/shvm_irl/"} target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://www.instagram.com/shvm_irl/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="nav-social-btn"
+                  title="Instagram"
+                >
                   <img src={navIcon3} alt="Instagram" />
                 </a>
               </div>
-              
-              <HashLink to='#connect' style={{ textDecoration: 'none' }}>
-                <button className="nav-vvd-btn">Let’s Connect</button>
+
+              <HashLink to="#connect" style={{ textDecoration: 'none' }} onClick={() => setExpanded(false)}>
+                <button className="nav-cta">Let's Connect</button>
               </HashLink>
             </div>
-            
           </Navbar.Collapse>
         </Container>
       </Navbar>
     </Router>
-  )
-}
+  );
+};
