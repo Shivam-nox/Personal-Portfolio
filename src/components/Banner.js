@@ -343,7 +343,7 @@ useEffect(() => {
 
             <div className="hero-cta-row">
               <a
-                href="https://drive.google.com/file/d/1-FM_H712aUuvHFciYBZb3mR4eUJnfyRo/view?usp=sharing"
+                href="https://drive.google.com/file/d/1cFXt7hTJcHgX6F7S9jOGz9uwPad_GmA5/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary-hero"
