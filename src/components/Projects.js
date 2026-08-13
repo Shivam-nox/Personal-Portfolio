@@ -157,12 +157,12 @@ export const Projects = () => {
   const achievements = [
     {
       icon: "🏆",
-      title: "HackerRank Gold — DSA",
+      title: "Problem Solving— DSA",
       description: "Solved 300+ problems on LeetCode, GFG & HackerRank. Strong command of DP, Graphs, and Trees.",
     },
     {
       icon: "🎓",
-      title: "9.11 CGPA — NIT Mizoram",
+      title: "9.25 CGPA — NIT Mizoram",
       description: "Top-tier academic performance in Computer Science Engineering.",
     },
   ];
